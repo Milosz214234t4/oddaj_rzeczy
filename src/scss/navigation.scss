@@ -1,0 +1,14 @@
+.navigation{
+display: flex;
+justify-content: space-between;
+margin-bottom: 80px;
+}
+
+.link-nav{
+    font-size: 18px;
+    color: black;
+}
+
+.link-nav:hover{
+    border: 0.2px solid black;
+}
