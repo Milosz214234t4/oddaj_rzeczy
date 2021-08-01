@@ -1,5 +1,8 @@
 import React from "react";
-import Home from "./components/Home"
+import Home from "./components/Home";
+import Login from "./components/Login";
+import CreateAccount from "./components/CreateAccount";
+
 import {
   HashRouter,
   Route,
@@ -13,8 +16,8 @@ function App() {
   return (
   <HashRouter>
   <Switch>
-  <Route exact path='/Login'></Route>
-  <Route exact path='/CreateAccount'></Route>
+  <Route exact path='/Login' component={Login}></Route>
+  <Route exact path='/CreateAccount' component = {CreateAccount}></Route>
 
     <Route exact path='/' component={Home} />
     </Switch>
