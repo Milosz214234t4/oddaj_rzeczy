@@ -5,6 +5,7 @@ import ThreeColumns from "./ThreeColumns";
 import FourSteps from "./FourSteps";
 import AboutUs from "./AboutUs";
 import WhoWeHelp from "./WhoWeHelp";
+import ContactForm from "./ContactForm";
 
 
 function Home() {
@@ -15,6 +16,7 @@ function Home() {
         <FourSteps/>
         <AboutUs/>
         <WhoWeHelp/>
+        <ContactForm/>
     </div>
 
     );
