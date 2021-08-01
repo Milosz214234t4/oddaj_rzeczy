@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router";
+import app from "./firebase/base";
+
 import "../scss/Login.scss";
 import "../scss/ContactForm.scss"
 import Decoration from "../assets/Decoration.svg";
 import Navigation from "./Navigation";
 
-function CreateAccount() {
+const CreateAccount = ({ history }) => {
+    const [password, setPassword] = useState("")
+    const handleSignUp = useCallback(async event => {
+        event.preventDefault();
+        const { email, password, passwordconfim } = event.target.elements;
+        await app
+        .auth()
+        .createUserWithEmailAndPassword(email.value, password.value);
+    history.push("/Userpage");
+    console.log(email);
+    console.log(password);
+
+
+      
+    }, [history]);
+
+
     return (<>
     <div className = "right">
         <Navigation/>
@@ -17,7 +36,7 @@ function CreateAccount() {
             <h1>Załóż konto</h1>
             <img src={Decoration} className="img decoration" />
 
-                <form
+                <form onSubmit={handleSignUp}
                 className="grid form-login"
                 >
                 <section className = "background-login grid">
@@ -32,18 +51,18 @@ function CreateAccount() {
                  <label>
                 Hasło
                 </label>
-                <input
-                className="label-contact-form border-bottom"
-                name="passowrd"
-                type="password"
-                placeholder="Passowrd" />
+               
+                <input name="password"
+                                   className="label-contact-form border-bottom"
+                                   type="password"
+                                    placeholder="Password" />
                    <label>
                 Powtórz hasło
                 </label>
                 <input
                 className="label-contact-form border-bottom"
                 name="passowrdconfirm"
-                type="password"
+                type="passwordconfirm"
                 placeholder="Password confirm" />
                 </section>
                 <section className = "section-login">
@@ -62,4 +81,4 @@ function CreateAccount() {
     );
 }
 
-export default CreateAccount;
+export default withRouter(CreateAccount);
