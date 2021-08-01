@@ -13,17 +13,57 @@ const CreateAccount = ({ history }) => {
     const handleSignUp = useCallback(async event => {
         event.preventDefault();
         const { email, password, passwordconfim } = event.target.elements;
+        if (!(event.target.password.value === event.target.passwordconfim.value) || !(validatePassword(event.target.password))){
+            alert("Hasła muszą być jednakowe, zawierać co najmniej 8 znaków, jedną wielką literę, jedną małą oraz znak specjalny");
+            return false;
+        }
+        else if(!(validateEmail(event.target.email))){
+            alert("Proszę podać poprawny adres email");
+            return false;
+        }
+       
+        else{
         await app
         .auth()
         .createUserWithEmailAndPassword(email.value, password.value);
     history.push("/Userpage");
     console.log(email);
     console.log(password);
-
+        }
 
       
     }, [history]);
+    function validateEmail(email)
+    {
+        var re = /\S+@\S+\.\S+/;
+        return re.test(email);
+    }
 
+    function validatePassword(password) {
+       
+        let arr = [];
+        var re1 = /[a-z]/;
+        var re2 = /[A-Z]/;
+        var re3 = /[$@$!%*?&]/;
+        // console.log(passwordconfim)
+        // console.log(re1.test(password));
+        // console.log(re2.test(password));
+        // console.log(re3.test(password));
+
+
+
+        if (re1.test(password) && re2.test(password) && re3.test(password)){
+            return true
+        }
+
+       else {
+           // alert("Hasło musi zawierać co najmniej 8 znaków, jedną wielką literę, jedną małą oraz znak specjalny i cyfrę")
+       return false
+       }
+
+
+
+}
 
     return (<>
     <div className = "right">
@@ -46,7 +86,7 @@ const CreateAccount = ({ history }) => {
                 <input
                 className="label-contact-form border-bottom"
                 name="email"
-                type="email"
+                type="text"
                 placeholder="Email" />
                  <label>
                 Hasło
@@ -59,11 +99,10 @@ const CreateAccount = ({ history }) => {
                    <label>
                 Powtórz hasło
                 </label>
-                <input
-                className="label-contact-form border-bottom"
-                name="passowrdconfirm"
-                type="passwordconfirm"
-                placeholder="Password confirm" />
+                <input name="passwordconfim"
+                                   className="label-contact-form border-bottom"
+                                   type="password"
+                                   placeholder="passwordconfim" />
                 </section>
                 <section className = "section-login">
                 <button
