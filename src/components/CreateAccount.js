@@ -13,16 +13,13 @@ const CreateAccount = ({ history }) => {
     const handleSignUp = useCallback(async event => {
         event.preventDefault();
         const { email, password, passwordconfim } = event.target.elements;
-        if (!(event.target.password.value === event.target.passwordconfim.value) || !(validatePassword(event.target.password))){
+        if (!(event.target.password.value === event.target.passwordconfim.value) ){
             alert("Hasła muszą być jednakowe, zawierać co najmniej 8 znaków, jedną wielką literę, jedną małą oraz znak specjalny");
             return false;
         }
-        else if(!(validateEmail(event.target.email))){
-            alert("Proszę podać poprawny adres email");
-            return false;
-        }
+        
        
-        else{
+        else if(validatePassword(event.target.password.value) ){
         await app
         .auth()
         .createUserWithEmailAndPassword(email.value, password.value);
@@ -33,11 +30,7 @@ const CreateAccount = ({ history }) => {
 
       
     }, [history]);
-    function validateEmail(email)
-    {
-        var re = /\S+@\S+\.\S+/;
-        return re.test(email);
-    }
+   
 
     function validatePassword(password) {
        
@@ -86,7 +79,7 @@ const CreateAccount = ({ history }) => {
                 <input
                 className="label-contact-form border-bottom"
                 name="email"
-                type="text"
+                type="email"
                 placeholder="Email" />
                  <label>
                 Hasło
