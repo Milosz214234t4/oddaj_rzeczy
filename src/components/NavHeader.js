@@ -9,7 +9,7 @@ import Navigation from "./Navigation";
 
 function NavHeader() {
     return (<>
-            <div className="left">
+            <div className="left" id = "NavHeader">
             <img src={HomeHeroImage} className="img-NavHeader" />
 
             </div>

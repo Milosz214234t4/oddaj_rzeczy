@@ -8,7 +8,7 @@ import People from "../assets/People.jpg"
 // import "../scss/ThreeColumns.scss"
 function AboutUs() {
     return (
-     <div className = "flex">
+     <div className = "flex" id = "AboutUs">
      <div className = "left"
                  style = {{background: '#F0F1F1'}}>
 

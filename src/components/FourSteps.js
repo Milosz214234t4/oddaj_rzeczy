@@ -11,7 +11,7 @@ import Decoration from "../assets/Decoration.svg"
 
 function FourSteps() {
     return (<>
-            <div className = "grid">
+            <div className = "grid" id ="FourSteps">
             <h1>Wystarczą 4 proste kroki</h1>
             <img src={Decoration} className="decoration" />
             </div>

@@ -101,7 +101,7 @@ function WhoWeHelp() {
 
    
     return (
-     <div className = "grid">
+     <div className = "grid" id = "Whowehelp">
             <h1>Komu pomagamy?</h1>
             <img src={Decoration} className="decoration" />
             <div className="flex buttons-whowehelp">
