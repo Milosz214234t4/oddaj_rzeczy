@@ -6,10 +6,12 @@ import FourSteps from "./FourSteps";
 import AboutUs from "./AboutUs";
 import WhoWeHelp from "./WhoWeHelp";
 import ContactForm from "./ContactForm";
+import ButtonsLogCreate from "./ButtonsLogCreate";
 
 
 function Home() {
-    return (
+    return (<>
+        <ButtonsLogCreate/>
     <div className = "container-home">
         <NavHeader/>
         <ThreeColumns/>
@@ -18,7 +20,7 @@ function Home() {
         <WhoWeHelp/>
         <ContactForm/>
     </div>
-
+</>
     );
 }
 

@@ -2,18 +2,20 @@ import React from "react";
 import {Link} from "react-router-dom";
 import app from "../components/firebase/base"
 import "../scss/main.scss";
-import "../scss/NavHeader.scss";
+import ButtonsLogCreate from "./ButtonsLogCreate";
 
-import HomeHeroImage from "../assets/HomeHeroImage.jpg"
-import Decoration from "../assets/Decoration.svg"
-import Navigation from "./Navigation";
+
 
 function Userpage() {
+  
+    // console.log(app.auth().currentUser.email);
     return (<>
-            <h2>Userpage</h2>
+    <ButtonsLogCreate/>
+            
             <button
                                 className="select-login"
-                                onClick={() => app.auth().signOut()}>Sign out</button>
+                                onClick={() => app.auth().signOut()}>Wyloguj sie</button>
+                                <Link to="/">Główna</Link>
             </>
     );
 }

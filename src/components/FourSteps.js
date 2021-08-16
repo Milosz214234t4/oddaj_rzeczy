@@ -7,9 +7,18 @@ import IconTwo from "../assets/IconTwo.svg";
 import IconThree from "../assets/IconThree.svg";
 import IconFour from "../assets/IconFour.svg";
 import Decoration from "../assets/Decoration.svg"
+import app from "../components/firebase/base"
 
 
 function FourSteps() {
+    let button;
+    if (!app.auth().currentUser) {
+        button =             <button className="button-NavHeader"><Link to="/Login">ODDAJ RZECZY</Link></button>
+        ;
+      } else {
+        button =             <button className="button-NavHeader"><Link to="/Userpage">ODDAJ RZECZY</Link></button>
+        ;
+      }
     return (<>
             <div className = "grid" id ="FourSteps">
             <h1>Wystarczą 4 proste kroki</h1>
@@ -41,7 +50,7 @@ function FourSteps() {
                     
             </div>
             <div className = "flex">
-            <button className="button-NavHeader"><Link to="/Login">ODDAJ RZECZY</Link></button>
+            {button}
             </div>
             </>
     );

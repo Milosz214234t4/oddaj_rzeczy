@@ -1,0 +1,13 @@
+.container-buttons-logcreate{
+    display: flex;
+    justify-content: end;
+    gap: 20px;
+}
+
+.container-buttons-logcreate button{
+    font-size: 18px;
+}
+.container-buttons-logcreate button:nth-child(2){
+    border: 0.5px solid yellow;
+}
+
